@@ -1,0 +1,1 @@
+# Triango's hotel
