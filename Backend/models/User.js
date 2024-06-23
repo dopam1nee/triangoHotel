@@ -17,6 +17,17 @@ const userSchema = new mongoose.Schema(
 			type: Number,
 			default: roles.USER, // значение по умолчанию
 		},
+		email: {
+			type: String,
+			validate: {
+				validator: validator.isEmail, // валидация
+				message: 'Неправильный email', // сообщение об ошибке
+			},
+		},
+		bookings: {
+			type: Array,
+			default: [],
+		}
 	},
 	{ timestamps: true }, // добавляет дату и время создания и обновления документа в MongoDB
 )
