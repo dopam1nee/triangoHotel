@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-const status = require('../constants/status')
 
 const roomSchema = new mongoose.Schema({
 	number: {
@@ -25,9 +24,8 @@ const roomSchema = new mongoose.Schema({
 		},
 	},
 	status: {
-		type: String,
-		enum: [status.AVAILABLE, status.BOOKED], // значение должно быть одним из двух указанных вариантов
-		default: status.AVAILABLE,
+		type: Boolean,
+		default: false,
 	},
 	bookings: {
 		// связали выбранный номер с бронированием конкретного пользователя; когда бронируется номер, создаётся новый документ в коллекции "bookings". Значение ObjectId этого документа будет сохранено в поле bookings  этой схемы
