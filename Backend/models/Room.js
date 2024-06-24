@@ -6,6 +6,7 @@ const roomSchema = new mongoose.Schema({
 	number: {
 		type: String,
 		required: true,
+		unique: true,
 	},
 	info: {
 		type: String,
@@ -20,16 +21,15 @@ const roomSchema = new mongoose.Schema({
 		required: true,
 		validate: {
 			// валидация
-			validator: validator.isURL, // ключ validator можно назвать иначе (например, checkUrl); значение - функция валидации isURL из библиотеки validator
-			message: 'Incorrect image URL', // сообщение об ошибке
+			validator: validator.isURL,
+			message: 'Incorrect image URL',
 		},
 	},
 	status: {
-		type: String,
-		enum: [status.AVAILABLE, status.BOOKED], // значение должно быть одним из двух указанных вариантов
+		type: Number,
 		default: status.AVAILABLE,
 	},
-	bookings: {
+	booking: {
 		// связали выбранный номер с бронированием конкретного пользователя; когда бронируется номер, создаётся новый документ в коллекции "bookings". Значение ObjectId этого документа будет сохранено в поле bookings  этой схемы
 		type: mongoose.Schema.Types.ObjectId, // тип - идентификатор; в нашем случае это id бронирования (даты)
 		ref: 'Booking', // ссылка на модель Booking (коллекцию bookings в MongoDB); говорим, что выбранный номер относится к конкретному бронированию, чтобы знать, какое именно бронирование относится к этому номеру
