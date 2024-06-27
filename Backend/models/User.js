@@ -8,11 +8,12 @@ const userSchema = new mongoose.Schema(
 			// поле
 			type: String, // тип данных
 			required: true, // значение обязательно
+			unique: true, // уникальное значение
 		},
 		email: {
 			type: String,
 			required: true,
-			// unique: true, // уникальное значение
+			unique: true,
 		},
 		password: {
 			type: String,
