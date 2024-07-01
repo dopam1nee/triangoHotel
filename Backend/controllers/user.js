@@ -11,12 +11,13 @@ const register = async (login, email, password) => {
 
 	const user = await User.create({ login, email, password: passwordHash }) // создаём пользователя в БД
 
-	token = generateToken({ id: user.id }) // генерируем токен для текущей сессии
+	const token = generateToken({ id: user.id }) // генерируем токен для текущей сессии
 
 	return { user, token }
 }
 
 const login = async (login, email, password) => {
+	// TODO переделать login, email
 	const user = await User.findOne({ login }) // ищем документ с пользователем в БД по логину
 	const userEmail = await User.findOne({ email })
 
@@ -32,7 +33,7 @@ const login = async (login, email, password) => {
 		throw new Error('Неверный пароль')
 	}
 
-	token = generateToken({ id: user.id })
+	const token = generateToken({ id: user.id })
 
 	return { user, token }
 }
@@ -40,8 +41,6 @@ const login = async (login, email, password) => {
 const getUsers = () => User.find() // возвращаем всех пользователей из БД
 
 const getUser = id => User.findById(id) // возвращаем пользователя по id
-
-// возвращаем список ролей
 
 const updateUser = (id, userData) =>
 	User.findByIdAndUpdate(id, userData, { returnDocument: 'after' }) // передаём id, по которому будем искать, и данные, которыми будем обновлять; возвращаем обновлённый документ с пользователем; returnDocument: 'after' - возвращаем документ после обновления, а не до

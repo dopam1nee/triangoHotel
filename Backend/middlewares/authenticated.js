@@ -5,7 +5,7 @@ const authenticated = async (req, res, next) => {
 	if (!req.cookies.token) {
 		res.send({ error: 'Токен отсутствует' })
 
-		return
+		return // останавливаем выполнение функции
 	}
 
 	const tokenData = verifyToken(req.cookies.token) // верифицируем токен
@@ -13,7 +13,8 @@ const authenticated = async (req, res, next) => {
 
 	if (!user) {
 		res.send({ error: 'Пользователь не найден' })
-		return // останавливаем выполнение функции
+
+		return
 	}
 
 	req.user = user // если пользователь найден, добавляем его в объект запроса, чтобы его можно было использовать в других частях приложения

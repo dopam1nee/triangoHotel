@@ -1,21 +1,16 @@
 const mongoose = require('mongoose')
-const status = require('../constants/status')
 
 const bookingSchema = new mongoose.Schema(
 	{
 		checkIn: {
 			// дата заезда
-			type: Date,
+			type: String,
 			required: true,
 		},
 		checkOut: {
 			// дата выезда
-			type: Date,
+			type: String,
 			required: true,
-		},
-		status: {
-			type: Number,
-			default: status.BOOKED,
 		},
 	},
 	{ timestamps: true },

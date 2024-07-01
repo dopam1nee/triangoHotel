@@ -6,10 +6,13 @@ const {
 	editRoom,
 	deleteRoom,
 } = require('../controllers/room')
+const { addBooking } = require('../controllers/booking')
 const authenticated = require('../middlewares/authenticated')
 const hasRole = require('../middlewares/has-role')
 const mapRoom = require('../mappers/map-room')
+const mapBooking = require('../mappers/map-booking')
 const ROLES = require('../constants/roles')
+const User = require('../models/User')
 
 const router = express.Router({ mergeParams: true })
 
@@ -34,6 +37,18 @@ router.post('/', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
 	})
 
 	res.send({ data: mapRoom(newRoom) })
+})
+
+router.post('/:id/book', authenticated, async (req, res) => {
+	//const user = await User.findById(req.user._id)
+	//const userId = user._id
+
+	const newBooking = await addBooking(req.params.id, {
+		checkIn: req.body.checkIn,
+		checkOut: req.body.checkOut,
+	})
+
+	res.send({ data: mapBooking(newBooking) })
 })
 
 router.patch('/:id', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {

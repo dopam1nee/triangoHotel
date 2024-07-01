@@ -5,4 +5,5 @@ const mapBooking = booking => {
 		checkOut: booking.checkOut,
 	}
 }
+
 module.exports = mapBooking

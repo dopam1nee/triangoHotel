@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-const status = require('../constants/status')
 
 const roomSchema = new mongoose.Schema(
 	{
@@ -27,15 +26,21 @@ const roomSchema = new mongoose.Schema(
 			},
 		},
 		status: {
-			type: Number,
-			enum: [status.AVAILABLE, status.BOOKED], // значение должно быть одним из указанных
-			default: status.AVAILABLE,
+			type: Boolean,
+			default: true,
 		},
-		booking: {
-			// связали выбранный номер с бронированием конкретного пользователя; когда бронируется номер, создаётся новый документ в коллекции "bookings". Значение ObjectId этого документа будет сохранено в поле bookings  этой схемы
-			type: mongoose.Schema.Types.ObjectId, // тип - идентификатор; в нашем случае это id бронирования (даты)
-			ref: 'Booking', // ссылка на модель Booking (коллекцию bookings в MongoDB); говорим, что выбранный номер относится к конкретному бронированию, чтобы знать, какое именно бронирование относится к этому номеру
-		},
+		bookings: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				default: '',
+				ref: 'Booking',
+			},
+		],
+		//booking: {
+		//	// связали выбранный номер с бронированием конкретного пользователя; когда бронируется номер, создаётся новый документ в коллекции "bookings". Значение ObjectId этого документа будет сохранено в поле booking этой схемы
+		//	type: mongoose.Schema.Types.ObjectId, // тип - идентификатор; в нашем случае это id бронирования (даты)
+		//	ref: 'Booking', // ссылка на модель Booking (коллекцию bookings в MongoDB); говорим, что выбранный номер относится к конкретному бронированию, чтобы знать, какое именно бронирование относится к этому номеру
+		//},
 	},
 	{ timestamps: true },
 )

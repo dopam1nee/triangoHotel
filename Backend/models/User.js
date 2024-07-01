@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema(
 			type: Number,
 			default: roles.USER, // значение по умолчанию
 		},
-		bookings: [
+		userBookings: [
 			{
 				// связали выбранный номер с бронированием конкретного пользователя; когда бронируется номер, создаётся новый документ в коллекции "bookings". Значение ObjectId этого документа будет сохранено в поле bookings  этой схемы
 				type: mongoose.Schema.Types.ObjectId, // тип - идентификатор; в нашем случае это id бронирования (даты)

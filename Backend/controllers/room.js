@@ -4,7 +4,7 @@ const addRoom = async room => {
 	const newRoom = await Room.create(room) // создаём номер в БД
 
 	await newRoom.populate({
-		path: 'booking',
+		path: 'bookings',
 		select: 'checkIn checkOut',
 		//populate: 'user', // для вложенных документов
 	}) // заполняем связанные документы, т.е. в newRoom будут не просто ссылки на документы (id), а целые объекты этих документов

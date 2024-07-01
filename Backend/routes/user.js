@@ -1,8 +1,10 @@
 const express = require('express')
 const { getUsers, getUser, updateUser, deleteUser } = require('../controllers/user')
+const { getBookings } = require('../controllers/booking')
 const authenticated = require('../middlewares/authenticated')
 const hasRole = require('../middlewares/has-role')
 const mapUser = require('../mappers/map-user')
+const mapBooking = require('../mappers/map-booking')
 const ROLES = require('../constants/roles')
 
 const router = express.Router({ mergeParams: true })
@@ -20,6 +22,17 @@ router.get('/:id', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
 
 	res.send({ data: mapUser(user) })
 })
+
+router.get(
+	'/:id/bookings',
+	authenticated,
+	hasRole([ROLES.ADMIN]),
+	async (req, res) => {
+		const bookings = await getBookings(req.params.id)
+
+		res.send({ data: bookings.map(mapBooking) })
+	},
+)
 
 router.patch('/:id', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
 	const newUser = await updateUser(req.params.id, req.body) // передаём id из параметров маршрута (:id) и тело запроса (введённые пользователем данные)
