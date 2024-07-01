@@ -8,16 +8,12 @@ const userSchema = new mongoose.Schema(
 			// поле
 			type: String, // тип данных
 			required: true, // значение обязательно
+			unique: true, // уникальное значение
 		},
 		email: {
 			type: String,
 			required: true,
-			unique: true, // уникальное значение
-			validate: {
-				// валидация
-				validator: validator.isEmail, // ключ validator можно назвать иначе (например, checkEmail); значение - функция валидации isEmail из библиотеки validator
-				message: 'Incorrect email', // сообщение об ошибке
-			},
+			unique: true,
 		},
 		password: {
 			type: String,
@@ -27,7 +23,7 @@ const userSchema = new mongoose.Schema(
 			type: Number,
 			default: roles.USER, // значение по умолчанию
 		},
-		bookings: [
+		userBookings: [
 			{
 				// связали выбранный номер с бронированием конкретного пользователя; когда бронируется номер, создаётся новый документ в коллекции "bookings". Значение ObjectId этого документа будет сохранено в поле bookings  этой схемы
 				type: mongoose.Schema.Types.ObjectId, // тип - идентификатор; в нашем случае это id бронирования (даты)
