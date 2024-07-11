@@ -6,7 +6,7 @@ const {
 	editRoom,
 	deleteRoom,
 } = require('../controllers/room')
-const { addBooking } = require('../controllers/booking')
+const { addBooking, deleteBooking } = require('../controllers/booking')
 const authenticated = require('../middlewares/authenticated')
 const hasRole = require('../middlewares/has-role')
 const mapRoom = require('../mappers/map-room')
@@ -39,11 +39,16 @@ router.post('/', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
 	res.send({ data: mapRoom(newRoom) })
 })
 
-router.post('/:id/book', authenticated, async (req, res) => {
-	//const user = await User.findById(req.user._id)
-	//const userId = user._id
+router.post('/:id/bookings', authenticated, async (req, res) => {
+	// req - куча данных из браузера, cookies: { token: 'd45DT3j...' }, body: { checkIn: '15.11.2024', checkOut: '20.11.2024' }, route: Route { path: '/:id/book', ..., methods: { post: true }, user: { _id: new ObjectId('658d303d...'), login: 'dopa', ..., roomss: [ new ObjectId('854d4292...'), new... ] }, cookie: 'token=d45DT3j...', host: 'localhost:3001', ...}
+	const reqUser = await User.findById(req.user) // { _id: new ObjectId('658d303d...'), login: 'dopa', ..., roomss: [ new ObjectId('854d4292...'), new... ] }
+	const reqUserId = await User.findById(req.user._id) // { _id: new ObjectId('658d303d...'), login: 'dopa', ..., roomss: [ new ObjectId('854d4292...'), new... ] }
+	// Записи req.user и req.user._id дадут один и тот же результат
+	const userId = reqUser.id // 658d303d...
+	const userUnderId = reqUser._id // new ObjectId('658d303d...')
 
-	const newBooking = await addBooking(req.params.id, {
+	// req.params.id - 3499ubc...
+	const newBooking = await addBooking(req.user.id, req.params.id, {
 		checkIn: req.body.checkIn,
 		checkOut: req.body.checkOut,
 	})
@@ -59,6 +64,12 @@ router.patch('/:id', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => 
 
 router.delete('/:id', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
 	await deleteRoom(req.params.id)
+
+	res.send({ error: null })
+})
+
+router.delete('/:id/bookings/:bookingId', authenticated, async (req, res) => {
+	await deleteBooking(req.user.id, req.params.id, req.params.bookingId)
 
 	res.send({ error: null })
 })

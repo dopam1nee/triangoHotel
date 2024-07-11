@@ -6,7 +6,6 @@ const addRoom = async room => {
 	await newRoom.populate({
 		path: 'bookings',
 		select: 'checkIn checkOut',
-		//populate: 'user', // для вложенных документов
 	}) // заполняем связанные документы, т.е. в newRoom будут не просто ссылки на документы (id), а целые объекты этих документов
 
 	return newRoom
@@ -14,7 +13,11 @@ const addRoom = async room => {
 
 const getRooms = () => Room.find()
 
-const getRoom = id => Room.findById(id)
+const getRoom = id =>
+	Room.findById(id).populate({
+		path: 'bookings',
+		select: '-createdAt -updatedAt -__v',
+	})
 
 const editRoom = async (id, room) => {
 	const newRoom = await Room.findByIdAndUpdate(id, room, { returnDocument: 'after' }) // ищем документ Room по id и обновляем его данными room, возвращая обновлённый документ

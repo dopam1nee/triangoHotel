@@ -22,11 +22,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
 	try {
-		const { user, token } = await login(
-			req.body.login,
-			req.body.email,
-			req.body.password,
-		)
+		const { user, token } = await login(req.body.login, req.body.password)
 
 		res
 			.cookie('token', token, { httpOnly: true })
@@ -37,7 +33,7 @@ router.post('/login', async (req, res) => {
 })
 
 router.post('/logout', (req, res) => {
-	res.cookie('token', '', { httpOnly: true }).send({}) // удаляем куки с токеном и отправляем пустой объект, потому что пользователь вышел из системы, следовательно, ему не нужны какие-либо данные
+	res.cookie('token', '', { httpOnly: true }).send({}) // удаляем куки с токеном (меняем на пустую строку) и отправляем пустой объект, потому что пользователь вышел из системы, следовательно, ему не нужны какие-либо данные
 })
 
 module.exports = router

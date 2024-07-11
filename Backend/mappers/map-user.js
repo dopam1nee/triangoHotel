@@ -5,6 +5,7 @@ const mapUser = user => {
 		email: user.email,
 		password: user.password,
 		role: user.role,
+		rooms: user.rooms,
 	}
 }
 module.exports = mapUser

@@ -19,7 +19,7 @@ app.use('/', routes) // подключаем маршруты (запросы)
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING).then(() => {
 	// подключаемся к базе данных
 	app.listen(port, () => {
-		// запускаем сервер после подключения к базе данных
+		// запускаем сервер
 		console.log(chalk.blueBright(`Server has been started on port ${port}...`))
 	})
 })
@@ -33,10 +33,10 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING).then(() => {
 
 // req.params - параметры маршрута (ссылка)
 //app.get('/users/:id', (req, res) => {
-//console.log(req.params) // { id: '123' }
+//	console.log(req.params) // { id: '123' }
 //})
 
 // req.query - параметры запроса (поиск)
 //app.get('/search', (req, res) => {
-//console.log(req.query) // { q: 'javascript', page: '2' }
+//	console.log(req.query) // { q: 'javascript', page: '2' }
 //}) // URL: /search?q=javascript&page=2
