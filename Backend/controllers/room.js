@@ -22,7 +22,7 @@ const getRoom = id =>
 const editRoom = async (id, room) => {
 	const newRoom = await Room.findByIdAndUpdate(id, room, { returnDocument: 'after' }) // ищем документ Room по id и обновляем его данными room, возвращая обновлённый документ
 
-	await newRoom.populate('booking', 'checkIn checkOut') // короткая запись
+	await newRoom.populate('bookings', 'checkIn checkOut') // короткая запись
 
 	return newRoom
 }

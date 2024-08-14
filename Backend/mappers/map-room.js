@@ -6,7 +6,7 @@ const mapRoom = room => {
 		number: room.number,
 		info: room.info,
 		price: room.price,
-		image: room.image,
+		images: room.images,
 		status: room.status,
 		bookings: room.bookings, // TODO
 		//bookings: room.bookings.map(

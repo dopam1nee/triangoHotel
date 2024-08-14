@@ -1,0 +1,22 @@
+.user-item-login,
+.user-item-registeredAt,
+.user-item-role {
+	font-weight: 600;
+}
+
+.select {
+	border: 1px solid var(--color-light);
+	border-radius: var(--border-radius);
+	padding-inline: 10px;
+	background-color: transparent;
+	transition-duration: var(--transition-duration);
+	/*color: var(--color-blue);*/
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.select:hover {
+	color: var(--color-hover);
+	border-color: var(--color-hover);
+}

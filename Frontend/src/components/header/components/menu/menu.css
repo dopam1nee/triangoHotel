@@ -1,0 +1,38 @@
+.header-menu-list {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 50px;
+}
+
+.header-menu-link.link {
+	display: inline-flex; /* Чтобы работал параметр height */
+	align-items: center;
+	height: 90px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: 1.2px;
+}
+
+.header-menu-link {
+	column-gap: 7px;
+}
+
+.header-menu-link.is-current {
+	position: relative;
+	padding-right: 15px;
+	color: var(--color-hover);
+}
+
+.header-menu-link.is-current::after {
+	content: '';
+	width: 5px;
+	aspect-ratio: 1; /* Пропорции элемента 1 к 1 */
+	background-color: currentColor;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+}

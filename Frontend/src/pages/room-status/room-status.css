@@ -1,0 +1,7 @@
+.room-status-list {
+	display: flex;
+	gap: 15px;
+	width: 570px;
+	padding: 30px;
+	flex-wrap: wrap;
+}

@@ -16,15 +16,17 @@ const roomSchema = new mongoose.Schema(
 			type: Number,
 			required: true,
 		},
-		image: {
-			type: String,
-			required: true,
-			validate: {
-				// валидация
-				validator: validator.isURL,
-				message: 'Incorrect image URL',
+		images: [
+			{
+				type: String,
+				required: true,
+				//validate: {
+				//	// валидация
+				//	validator: validator.isURL,
+				//	message: 'Incorrect image URL',
+				//},
 			},
-		},
+		],
 		status: {
 			type: Boolean,
 			default: true,

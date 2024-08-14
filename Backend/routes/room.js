@@ -33,7 +33,7 @@ router.post('/', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
 		number: req.body.number,
 		info: req.body.info,
 		price: req.body.price,
-		image: req.body.image,
+		images: req.body.images,
 	})
 
 	res.send({ data: mapRoom(newRoom) })

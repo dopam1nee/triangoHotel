@@ -1,0 +1,93 @@
+:root {
+	--color-dark: #000000;
+	--color-light: #ffffff;
+	--color-light-gray: #848c9c;
+	--color-blue: #0073ff;
+	--color-light-blue: #e5f1ff;
+	--color-light-blue-transparent: #e5f1ff20;
+	/*--color-hover: #7d71ff;*/
+	--color-hover: #0073ff;
+
+	--border-radius: 30px;
+	--border-radius-card-image: 30px 0 0 30px;
+
+	--border-light: 1px solid var(--color-light);
+	--border-light-blue: 1px solid var(--color-light-blue);
+	--border-hover: 1px solid var(--color-hover);
+
+	--font-family-base: PJS, sans-serif;
+
+	--header-height: 90px;
+
+	--input-height: 54px;
+
+	--container-width: 1300px;
+	--container-padding-x: 15px;
+	--container-padding-y: 30px;
+
+	--room-card-height: 240px;
+	--room-card-width: calc(100% / 3);
+
+	--transition-duration: 0.2s;
+}
+
+body {
+	min-height: 100%;
+	font-family: var(--font-family-base);
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 1.75;
+	color: var(--color-dark);
+	background-color: var(--color-light);
+}
+
+a {
+	color: var(--color-dark);
+}
+
+a:hover {
+	color: var(--color-hover);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+	transition-duration: var(--transition-duration);
+}
+
+.container {
+	max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+	margin-inline: auto;
+	margin-top: var(--header-height);
+	padding-inline: var(--container-padding-x);
+	padding-block: var(--container-padding-y);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+/*.app {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	min-height: 100%;
+}
+
+.layout {
+	display: flex;
+	width: calc(var(--layout-width) + var(--layout-padding-x) * 2);
+	padding: var(--layout-padding-y) var(--layout-padding-x);
+	margin-top: var(--header-height);
+
+	background-color: violet;
+}*/

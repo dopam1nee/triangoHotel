@@ -1,0 +1,6 @@
+.header-logo {
+	display: flex;
+	height: 90px;
+	align-items: center;
+	flex-shrink: 0; /* Изображение не будет искажаться при сжатии */
+}

@@ -1,0 +1,109 @@
+.room-card {
+	display: flex;
+	justify-content: space-between;
+	/*width: var(--layout-width);*/
+	height: var(--room-card-height);
+	margin-bottom: 15px;
+	border-radius: var(--border-radius);
+	background-color: var(--color-light-blue);
+	overflow: hidden;
+	width: 100%;
+}
+
+.room-card:last-child {
+	margin-bottom: 0;
+}
+
+.room-card-block {
+	flex: 2;
+	margin-right: 40px;
+}
+
+.room-card-block:last-child {
+	flex: 1;
+}
+
+/*.room-card-block:not(:nth-last-child(2)) Выбрали все блоки, кроме предпоследнего*/
+.room-card-block:nth-last-child(2) {
+	/* Выбрали предпоследний блок */
+	margin-right: 0;
+}
+
+.room-card-image {
+	/*width: var(--room-card-image-width);*/
+	height: 100%;
+	object-fit: cover;
+}
+
+.room-card-info {
+	display: flex;
+	justify-content: center;
+	align-items: start;
+	flex-direction: column;
+	padding-right: 40px;
+
+	/*width: var(--room-card-width);*/
+}
+
+.room-card-image,
+.room-card-info,
+.room-card-slider {
+	border-radius: var(--border-radius);
+	box-shadow: 20px 0 40px -15px rgba(0 0 0 / 0.1); /* x, y, blur, spread (size), color */
+}
+
+.info-title {
+	font-size: 32px;
+	font-weight: 800;
+	align-items: end;
+	height: 80px;
+}
+
+.room-card-price {
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	align-items: end;
+	padding-bottom: 30px;
+}
+
+.price {
+	display: flex;
+	align-items: center;
+	height: 50%;
+	font-size: 32px;
+	font-weight: 700;
+	/*color: var(--color-blue);*/
+}
+
+.room-card-info {
+	display: flex;
+	flex-direction: column;
+}
+
+.info-title,
+.info-description {
+	display: inline-flex;
+	align-items: start;
+	height: 180px;
+	width: 100%;
+}
+
+.info-title {
+	align-items: end;
+	height: 80px;
+	/*color: var(--color-blue);*/
+}
+
+.room-card-slider {
+	width: 40%;
+	overflow: hidden; /* TODO */
+}
+
+.room-card-info {
+	width: 40%;
+}
+
+.room-card-price {
+	width: 20%;
+}

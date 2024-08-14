@@ -1,0 +1,51 @@
+.users {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.users h1 {
+	/*color: var(--color-hover);*/
+}
+
+.users-list {
+	width: 600px;
+	background-color: var(--color-light-blue);
+	padding: 15px 30px;
+	border-radius: var(--border-radius);
+}
+
+.user-item {
+	display: flex;
+	padding-block: 10px;
+	border-top: 1px solid var(--color-light);
+}
+
+.user-item:first-child {
+	border-top: none;
+}
+
+.user-item-login {
+	flex: 3;
+	margin-right: 20px;
+	/*color: var(--color-hover);*/
+
+	white-space: nowrap; /* Предотвращает перенос текста на новую строку */
+	overflow: hidden; /* Скрывает часть текста, превышающую заданную ширину */
+	text-overflow: ellipsis; /* Добавляет три точки в конце обрезанного текста */
+	max-width: 315px; /* Задает максимальную ширину элемента, после которой текст будет обрезан */
+}
+
+.user-item-registeredAt {
+	flex: 1;
+	/*color: var(--color-hover);*/
+}
+
+.user-item-role {
+	display: inline-flex;
+	justify-content: end;
+	/*width: 104px;*/
+	flex: 1;
+}

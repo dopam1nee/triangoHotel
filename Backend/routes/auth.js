@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
 			.cookie('token', token, { httpOnly: true })
 			.send({ error: null, user: mapUser(user) })
 	} catch (err) {
-		res.send({ error: err.message || 'Неизвестная ошибка во входе...' })
+		res.send({ error: err.message || 'Неизвестная ошибка при входе...' })
 	}
 })
 
