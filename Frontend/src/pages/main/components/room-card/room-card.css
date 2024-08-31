@@ -107,3 +107,14 @@
 .room-card-price {
 	width: 20%;
 }
+
+.book-link {
+	border: none;
+}
+
+.book-card {
+	display: flex;
+	height: 80vh;
+	width: 50vw;
+	background-color: coral;
+}

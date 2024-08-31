@@ -51,8 +51,9 @@
 .header-link-log-in:hover,
 .header-link-log-out:hover {
 	border: var(--border-hover);
+	color: var(--color-hover);
 }
 
 .header-link-log-out {
-	/*color: var(--color-blue);*/
+	background-color: transparent;
 }

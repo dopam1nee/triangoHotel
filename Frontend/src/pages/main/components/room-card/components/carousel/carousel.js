@@ -17,6 +17,7 @@ export const Carousel = ({ images }) => {
 		<Slider {...settings}>
 			{images.map(roomImage => (
 				<img
+					key={roomImage}
 					className="room-card-image room-card-block"
 					src={roomImage}
 					alt="Room"

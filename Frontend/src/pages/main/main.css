@@ -3,3 +3,8 @@
 	flex-wrap: wrap;
 	gap: 16px;
 }*/
+
+.rooms-not-found {
+	display: flex;
+	justify-content: center;
+}

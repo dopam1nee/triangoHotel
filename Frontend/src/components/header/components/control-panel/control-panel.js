@@ -30,13 +30,12 @@ export const ControlPanel = () => {
 					</Link>
 				</>
 			) : (
-				<Link
-					to="/"
+				<button
 					className="header-link-log-out control-panel-link link"
 					onClick={onLogout}
 				>
 					Log out
-				</Link>
+				</button>
 			)}
 		</div>
 	)

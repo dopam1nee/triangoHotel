@@ -2,9 +2,10 @@ const Booking = require('../models/Booking')
 const Room = require('../models/Room')
 const User = require('../models/User')
 
-const addBooking = async (userId, roomId, dates) => {
+const addBooking = async (userId, roomId, data) => {
 	// TODO дописать контроллеры
-	const newBooking = await Booking.create(dates) // { _id: new ObjectId('...'), checkIn: ..., checkOut: ... }
+	const newBooking = await Booking.create(data) // { _id: new ObjectId('...'), checkIn: ..., checkOut: ... }
+
 	const room = await Room.findByIdAndUpdate(roomId, {
 		$push: { bookings: newBooking },
 	}) // { _id: new ObjectId('...'), number: ..., bookings: [ new ObjectId('...') ] }
@@ -12,6 +13,7 @@ const addBooking = async (userId, roomId, dates) => {
 	await User.findByIdAndUpdate(userId, {
 		$push: { rooms: room },
 	})
+
 	//.populate({
 	//	path: 'rooms',
 	//	select: '-createdAt -updatedAt -__v',

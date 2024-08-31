@@ -6,7 +6,12 @@ const mapUser = user => {
 		password: user.password,
 		role: user.role,
 		rooms: user.rooms,
-		registeredAt: user.createdAt,
+		registeredAt: new Date(user.createdAt).toLocaleDateString('en-GB', {
+			year: '2-digit',
+			month: '2-digit',
+			day: '2-digit',
+		}),
 	}
 }
+
 module.exports = mapUser

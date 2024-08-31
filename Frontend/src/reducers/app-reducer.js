@@ -8,6 +8,10 @@ const initialAppState = {
 		onConfirm: () => {},
 		onCancel: () => {},
 	},
+	bookCard: {
+		isOpen: false,
+		onCancel: () => {},
+	},
 }
 
 export const appReducer = (state = initialAppState, { type, payload }) => {
@@ -27,6 +31,16 @@ export const appReducer = (state = initialAppState, { type, payload }) => {
 				},
 			}
 		case ACTION_TYPE.CLOSE_MODAL:
+			return initialAppState
+		case ACTION_TYPE.OPEN_BOOK_CARD:
+			return {
+				...state,
+				bookCard: {
+					...state.bookCard,
+					isOpen: true,
+				},
+			}
+		case ACTION_TYPE.CLOSE_BOOK_CARD:
 			return initialAppState
 		default:
 			return state

@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Header } from './components'
-import { Login, Main, Register, Users, RoomStatus } from './pages'
+import { Login, Main, Register, Users, RoomStatus, MyRooms, AddRoom } from './pages'
 import { useDispatch } from 'react-redux'
 import { setUser } from './actions'
 import './app.css'
@@ -34,6 +34,8 @@ export const App = () => {
 					<Route path="/login" element={<Login />} />
 					<Route path="/users" element={<Users />} />
 					<Route path="/room-status" element={<RoomStatus />} />
+					<Route path="/my-rooms" element={<MyRooms />} />
+					<Route path="/add-room" element={<AddRoom />} />
 				</Routes>
 			</div>
 		</div>

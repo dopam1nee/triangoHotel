@@ -12,11 +12,11 @@ export const UserItem = ({
 	const [initialRole, setInitialRole] = useState(userRole) // начальная роль
 	const [selectedRole, setSelectedRole] = useState(userRole) // выбранная роль
 
-	const dateString = new Date(registeredAt).toLocaleDateString('en-US', {
-		year: '2-digit',
-		month: '2-digit',
-		day: '2-digit',
-	})
+	//const dateString = new Date(registeredAt).toLocaleDateString('en-US', {
+	//	year: '2-digit',
+	//	month: '2-digit',
+	//	day: '2-digit',
+	//})
 
 	const onRoleSave = (userId, newRole) => {
 		request(`/users/${userId}`, 'PATCH', { role: newRole })
@@ -34,7 +34,7 @@ export const UserItem = ({
 	return (
 		<li className="user-item" key={userId}>
 			<h4 className="user-item-login">{login}</h4>
-			<h4 className="user-item-registeredAt">{dateString}</h4>
+			<h4 className="user-item-registeredAt">{registeredAt}</h4>
 			<h4 className="user-item-role">
 				<select className="select" value={selectedRole} onChange={onRoleChange}>
 					{roles.map(({ id: roleId, name: roleName }) => (

@@ -1,13 +1,9 @@
 import './room-item.css'
 
-export const RoomItem = ({ id, number, status }) => {
-	//useEffect(() => {
-	//	setSelectedRole(initialRole) // обновляем выбранную роль каждый раз, когда меняется начальная (при изменении на сервере)
-	//}, [initialRole])
-
+export const RoomItem = ({ id, number, status, bookings }) => {
 	return (
 		<>
-			{status ? (
+			{!bookings.length ? (
 				<li className="room-item" key={id}>
 					<h2>{number}</h2>
 				</li>

@@ -22,12 +22,26 @@ export const RoomStatus = () => {
 
 	return (
 		<div className="room-status users">
-			<h1>Room status</h1>
-			<ul className="room-status-list users-list">
-				{rooms.map(({ id, number, status }) => (
-					<RoomItem key={id} id={id} number={number} status={status} />
-				))}
-			</ul>
+			{rooms.length ? (
+				<>
+					<h1>Room status</h1>
+					<ul className="room-status-list users-list">
+						{rooms.map(({ id, number, status, bookings }) => (
+							<RoomItem
+								key={id}
+								id={id}
+								number={number}
+								status={status}
+								bookings={bookings}
+							/>
+						))}
+					</ul>
+				</>
+			) : (
+				<div>
+					<h1>Rooms not found</h1>
+				</div>
+			)}
 		</div>
 	)
 }

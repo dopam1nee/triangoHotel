@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 	res.send({ data: rooms.map(mapRoom) })
 })
 
-router.get('/:id', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
+router.get('/:id', async (req, res) => {
 	const room = await getRoom(req.params.id)
 
 	res.send({ data: mapRoom(room) })

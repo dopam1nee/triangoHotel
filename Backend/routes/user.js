@@ -5,6 +5,7 @@ const authenticated = require('../middlewares/authenticated')
 const hasRole = require('../middlewares/has-role')
 const mapUser = require('../mappers/map-user')
 const mapBooking = require('../mappers/map-booking')
+const mapUserRooms = require('../mappers/map-user-rooms')
 const ROLES = require('../constants/roles')
 
 const router = express.Router({ mergeParams: true })
@@ -20,19 +21,18 @@ router.get('/:id', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
 	// /users/50213580ub23959du87
 	const user = await getUser(req.params.id)
 
+	console.log('/users/:id', mapUser(user))
+
 	res.send({ data: mapUser(user) })
 })
 
-router.get(
-	'/:id/bookings',
-	authenticated,
-	hasRole([ROLES.ADMIN]),
-	async (req, res) => {
-		const bookings = await getBookings(req.params.id)
+router.get('/:id/rooms', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
+	const user = await getUser(req.params.id)
 
-		res.send({ data: bookings.map(mapBooking) })
-	},
-)
+	console.log('/users/:id/rooms', mapUserRooms(user))
+
+	res.send({ data: mapUserRooms(user) })
+})
 
 router.patch('/:id', authenticated, hasRole([ROLES.ADMIN]), async (req, res) => {
 	const newUser = await updateUser(req.params.id, req.body) // передаём id из параметров маршрута (:id) и тело запроса (введённые пользователем данные)

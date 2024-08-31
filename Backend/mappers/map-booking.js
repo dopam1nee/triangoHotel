@@ -3,6 +3,7 @@ const mapBooking = booking => {
 		id: booking._id,
 		checkIn: booking.checkIn,
 		checkOut: booking.checkOut,
+		user: booking.user,
 	}
 }
 
